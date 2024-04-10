@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <select name="symbol_s" class="form-control mx-auto w-auto" autocomplete="off">
+                <option disabled selected>Select Stock</option>
+                {% for x in stocks %}
+                    <option value="{{ x['stock'] }}">{{ x["stock"] }}</optin>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" id="shares_s" name="shares_s" placeholder="Shares" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell Shares</button>
+    </form>
+{% endblock %}

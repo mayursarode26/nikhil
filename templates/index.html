@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for x in stocks %}
+                    <tr>
+                        <td>
+                            {{ x["stock"] }}
+                        </td>
+                        <td>
+                            {{ x["shares"] }}
+                        </td>
+                        <td>
+                            {{ x["price"] }}
+                        </td>
+                        <td>
+                            {{ "{:.2f}".format(x["price"] * x["shares"]) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            <th>Cash</th>
+                        </td>
+                        <td>
+
+                            {{ "{:.2f}".format(cash[0]["cash"]) }}
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <th>Total</th>
+                        </td>
+                        <td>
+                            {{ "{:.2f}".format(total + cash[0]["cash"]) }}
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
